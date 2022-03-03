@@ -1,4 +1,4 @@
-module.exports.queryString = (obj) => {
+export function queryString(obj) {
   const arr = Object.entries(obj)
     .map(([key, value]) => {
       if (typeof value === "object" && !Array.isArray(value)) {
@@ -10,9 +10,9 @@ module.exports.queryString = (obj) => {
     .join("&");
 
   return arr;
-};
+}
 
-module.exports.parse = (qs) => {
+export function parse(qs) {
   const qsSplit = qs.split("&").map((item) => {
     let [key, value] = item.split("=");
 
@@ -25,4 +25,4 @@ module.exports.parse = (qs) => {
   const obj = Object.fromEntries(qsSplit);
 
   return obj;
-};
+}
