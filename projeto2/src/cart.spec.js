@@ -18,7 +18,7 @@ describe("Cart", () => {
   });
 
   describe("getTotal()", () => {
-    it("should return 0 when getTotal is executed in a newly created instance", () => {
+    it("should be return 0 when getTotal is executed in a newly created instance", () => {
       expect(cart.getTotal()).toEqual(0);
     });
 
