@@ -19,7 +19,7 @@ describe("Cart", () => {
 
   describe("getTotal()", () => {
     it("should be return 0 when getTotal is executed in a newly created instance", () => {
-      expect(cart.getTotal()).toEqual(0);
+      expect(cart.getTotal().getAmount()).toEqual(0);
     });
 
     it("should be multiply quantity and price and receive total amount", () => {
@@ -30,7 +30,7 @@ describe("Cart", () => {
 
       cart.add(item);
 
-      expect(cart.getTotal()).toEqual(70776);
+      expect(cart.getTotal().getAmount()).toEqual(70776);
     });
 
     it("should be not have duplicated products", () => {
@@ -42,7 +42,7 @@ describe("Cart", () => {
       cart.add(item);
       cart.add(item);
 
-      expect(cart.getTotal()).toEqual(70776);
+      expect(cart.getTotal().getAmount()).toEqual(70776);
     });
 
     it("should be update value when update and remove product", () => {
@@ -60,7 +60,7 @@ describe("Cart", () => {
       cart.add(item2);
       cart.remove(item2);
 
-      expect(cart.getTotal()).toEqual(70776);
+      expect(cart.getTotal().getAmount()).toEqual(70776);
     });
   });
 
@@ -80,7 +80,7 @@ describe("Cart", () => {
       cart.add(item2);
 
       expect(cart.summary()).toMatchSnapshot();
-      expect(cart.getTotal()).toBeGreaterThan(0);
+      expect(cart.getTotal().getAmount()).toBeGreaterThan(0);
     });
 
     it("should reset cart when checkout() called", () => {
@@ -92,7 +92,7 @@ describe("Cart", () => {
       cart.add(item1);
 
       cart.checkout();
-      expect(cart.getTotal()).toEqual(0);
+      expect(cart.getTotal().getAmount()).toEqual(0);
     });
   });
 });

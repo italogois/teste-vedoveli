@@ -16,5 +16,8 @@
     "@babel/preset-env": "^7.16.11",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "dinero.js": "^1.9.1"
   }
 }

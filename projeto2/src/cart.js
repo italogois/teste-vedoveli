@@ -1,3 +1,7 @@
+import Dinero from "dinero.js";
+
+Dinero.defaultCurrency = "BRL";
+Dinero.defaultPrecision = 2;
 export default class Cart {
   items = [];
 
@@ -17,15 +21,16 @@ export default class Cart {
 
   getTotal() {
     const total = this.items.reduce(
-      (acc, item) => (acc + item.quantity) * item.product.price,
-      0
+      (acc, item) =>
+        acc.add(Dinero({ amount: item.quantity * item.product.price })),
+      Dinero({ amount: 0 })
     );
     return total;
   }
 
   summary() {
     return {
-      total: this.getTotal(),
+      total: this.getTotal().getAmount(),
       items: this.items,
     };
   }
